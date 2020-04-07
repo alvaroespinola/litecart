@@ -1,8 +1,8 @@
 
-
 <div id='map'></div>
 <p id="aviso"></p>
-<button class="btn btn-default" onclick="getLocation()" ><i class="fa fa-floppy-o"></i> Obtener Ubicacion GPS</button>
+
+<button class="btn btn-default" name="getlocation" type="button">Obtener Ubicacion GPS</button>
 
 <script>
 
@@ -10,11 +10,11 @@ var latitude = 0;
 var longitude = 0;
 var aviso = document.getElementById("aviso");
 
-var boxlatitude = document.getElementById("latitude");
-var boxlongitude = document.getElementById("longitude");
+var boxlatitude = document.getElementsByName("latitude")[0];
+var boxlongitude = document.getElementsByName("longitude")[0];
 
-var boxshipping_latitude = document.getElementById("shipping_address[latitude]")
-var boxshipping_longitude = document.getElementById("shipping_address[longitude]")
+var boxshipping_latitude = document.getElementsByName("shipping_address[latitude]")[0];
+var boxshipping_longitude = document.getElementsByName("shipping_address[longitude]")[0];
 
 
 	/*
@@ -37,18 +37,36 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 var marker;
 
-  function getLocation() {
+
+$('button[name="getlocation"]').click(function(){
+  // Fire your javascript code here.
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
+      navigator.geolocation.getCurrentPosition(rePosition);
     } else { 
       aviso.innerHTML = "Geolocation is not supported by this browser.";
     }
-  }
+});
+
+
+
   if (navigator.geolocation) {
-     navigator.geolocation.getCurrentPosition(showPosition);
+     navigator.geolocation.getCurrentPosition(iniPosition);
   }
 
-  function showPosition(position) {
+  function rePosition(position){
+  
+		latitude = position.coords.latitude;
+		longitude = position.coords.longitude;
+
+		boxlatitude.value = latitude;
+		boxlongitude.value = longitude;
+
+		boxshipping_latitude.value = latitude;
+		boxshipping_longitude.value = longitude;
+	iniPosition(position);
+  }
+  
+  function iniPosition(position) {
 
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
