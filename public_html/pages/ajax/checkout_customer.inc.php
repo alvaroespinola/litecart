@@ -57,6 +57,8 @@
       'zone_code',
       'phone',
       'different_shipping_address',
+	  'latitude',
+	  'longitude',
     );
 
     foreach ($fields as $field) {
@@ -75,6 +77,8 @@
       'country_code',
       'zone_code',
       'phone',
+	  'latitude',
+	  'longitude',
     );
 
     foreach ($fields as $field) {

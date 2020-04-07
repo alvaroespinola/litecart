@@ -1,0 +1,115 @@
+
+
+<div id='map'></div>
+<p id="aviso"></p>
+<button class="btn btn-default" onclick="getLocation()" ><i class="fa fa-floppy-o"></i> Obtener Ubicacion GPS</button>
+
+<script>
+
+var latitude = 0;
+var longitude = 0;
+var aviso = document.getElementById("aviso");
+
+var boxlatitude = document.getElementById("latitude");
+var boxlongitude = document.getElementById("longitude");
+
+var boxshipping_latitude = document.getElementById("shipping_address[latitude]")
+var boxshipping_longitude = document.getElementById("shipping_address[longitude]")
+
+
+	/*
+<!-- var map ; -->
+	<!-- if (typeof L !== 'undefined'  -->
+		<!-- && L !== null){ -->*/
+
+map = L.map('map').setView([ -25.40, -57.55], 16);	
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(map);
+	
+/*
+//aviso.innerHTML = "Geol.";
+} else {
+//aviso.innerHTML = "Geby this browser.";
+}
+*/
+
+var marker;
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+      aviso.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+  if (navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(showPosition);
+  }
+
+  function showPosition(position) {
+
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+
+	if (parseFloat(boxlatitude.value) == 0 || parseFloat(boxlongitude.value) == 0)
+	{
+		boxlatitude.value = latitude;
+		boxlongitude.value = longitude;
+	}
+	if (parseFloat(boxshipping_latitude.value) == 0 || parseFloat(boxshipping_longitude.value) == 0)
+	{
+		boxshipping_latitude.value = latitude;
+		boxshipping_longitude.value = longitude;
+	}
+	
+	if (map !== null 
+		//&& map.hasLayer('map') 
+		//&& typeof L !== 'undefined' 
+		//&& L !== null
+		) {
+
+		var posi = new L.LatLng(latitude, longitude)
+
+		map.panTo(posi);
+
+		if (marker == null){
+		  marker = new L.marker(posi, {draggable:'true'});
+		  marker.on('dragend', function(event){
+			var marker = event.target;
+			var position = marker.getLatLng();
+			marker.setLatLng(new L.LatLng(position.lat, position.lng),{draggable:'true'});
+			map.panTo(new L.LatLng(position.lat, position.lng))
+			
+			boxlatitude.value = position.lat;
+			boxlongitude.value = position.lng;
+
+			boxshipping_latitude.value = position.lat;
+			boxshipping_longitude.value = position.lng;
+		
+		  });
+		  map.addLayer(marker);
+		} else {
+		  marker.setLatLng(posi,{draggable:'true'});
+		}
+	};
+  }
+
+  function onMapClick(e) {
+    if (marker == null){
+      marker = new L.marker(e.latlng, {draggable:'true'});
+      marker.on('dragend', function(event){
+        var marker = event.target;
+        var position = marker.getLatLng();
+        marker.setLatLng(new L.LatLng(position.lat, position.lng),{draggable:'true'});
+        map.panTo(new L.LatLng(position.lat, position.lng))
+      });
+      map.addLayer(marker);
+    }
+  };
+  map.on('click', onMapClick);
+
+</script>
+
+

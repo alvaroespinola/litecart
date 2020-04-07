@@ -18,6 +18,8 @@
     'lastname' => isset($result['lastname']) ? $result['lastname'] : '',
     'address1' => isset($result['address1']) ? $result['address1'] : '',
     'address2' => isset($result['address2']) ? $result['address2'] : '',
+	'latitude' => isset($result['latitude']) ? $result['latitude'] : '',
+	'longitude' => isset($result['longitude']) ? $result['longitude'] : '',
     'postcode' => isset($result['postcode']) ? $result['postcode'] : '',
     'city' => isset($result['city']) ? $result['city'] : '',
     'country_code' => isset($result['country_code']) ? $result['country_code'] : '',

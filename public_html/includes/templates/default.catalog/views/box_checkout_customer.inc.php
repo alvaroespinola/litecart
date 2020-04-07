@@ -1,3 +1,11 @@
+<?php
+  document::$snippets['head_tags']['chartist'] = '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>';
+
+  document::$snippets['head_tags']['chartist'] = '<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>';
+  
+  document::$snippets['head_tags']['chartist'] = '<style>html, body {height: 100%;margin: 0;}#map {width: 100%;height: 400px;}</style>';
+  	
+?>
 <section id="box-checkout-customer" class="box">
   <?php echo functions::form_draw_hidden_field('customer_details', 'true'); ?>
 
@@ -53,6 +61,23 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="form-group col-xs-6">
+        <label><?php echo language::translate('title_latitude', 'Latitude'); ?></label>
+        <?php echo functions::form_draw_decimal_field('latitude', '',14,-180,+180); ?>
+      </div>
+
+      <div class="form-group col-xs-6">
+        <label><?php echo language::translate('title_longitude', 'Longitude'); ?></label>
+        <?php echo functions::form_draw_decimal_field('longitude','',14,-180,+180); ?>
+      </div>
+    </div>
+	<div class="row">
+		<div class="form-group col-sm-6">
+			<?php include(FS_DIR_APP . 'includes/leaflet.inc.html'); ?>
+		</div>
+    </div>
+	
     <div class="row">
       <div class="form-group col-xs-6">
         <label><?php echo language::translate('title_postcode', 'Postal Code'); ?></label>
@@ -127,7 +152,18 @@
           <label><?php echo language::translate('title_address2', 'Address 2'); ?></label>
           <?php echo functions::form_draw_text_field('shipping_address[address2]', true); ?>
         </div>
+		
+		<div class="form-group col-sm-6">
+          <label><?php echo language::translate('title_latitude', 'Latitude'); ?></label>
+          <?php echo functions::form_draw_decimal_field('shipping_address[latitude]','',14,-180,+180); ?>
+        </div>
+		
+		<div class="form-group col-sm-6">
+          <label><?php echo language::translate('title_longitude', 'Longitude'); ?></label>
+          <?php echo functions::form_draw_decimal_field('shipping_address[longitude]','',14,-180,+180); ?>
+        </div>
       </div>
+
 
       <div class="row">
         <div class="form-group col-sm-6">
@@ -159,7 +195,6 @@
           <?php echo functions::form_draw_phone_field('shipping_address[phone]', true); ?>
         </div>
       </div>
-
     </fieldset>
   </div>
 

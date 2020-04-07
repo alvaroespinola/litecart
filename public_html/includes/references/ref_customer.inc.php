@@ -60,6 +60,8 @@
             'phone',
             'different_shipping_address',
             'newsletter',
+			'latitude',
+			'longitude',
           );
 
           foreach ($map as $key) {
@@ -77,6 +79,8 @@
             'shipping_country_code' => 'country_code',
             'shipping_zone_code' => 'zone_code',
             'shipping_phone' => 'phone',
+			'shipping_latitude' => 'latitude',
+			'shipping_longitude' => 'longitude',
           );
 
           foreach ($key_map as $skey => $tkey) {

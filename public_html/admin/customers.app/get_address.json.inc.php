@@ -18,6 +18,8 @@
     'lastname' => !empty($customer['lastname']) ? $customer['lastname'] : '',
     'address1' => !empty($customer['address1']) ? $customer['address1'] : '',
     'address2' => !empty($customer['address2']) ? $customer['address2'] : '',
+	'latitude' => !empty($customer['latitude']) ? $customer['latitude'] : '',
+	'longitude' => !empty($customer['longitude']) ? $customer['longitude'] : '',
     'postcode' => !empty($customer['postcode']) ? $customer['postcode'] : '',
     'city' => !empty($customer['city']) ? $customer['city'] : '',
     'country_code' => !empty($customer['country_code']) ? $customer['country_code'] : '',
@@ -35,6 +37,8 @@
       'country_code' => !empty($customer['shipping_country_code']) ? $customer['shipping_country_code'] : '',
       'zone_code' => !empty($customer['shipping_zone_code']) ? $customer['shipping_zone_code'] : '',
       'phone' => !empty($customer['shipping_phone']) ? $customer['shipping_phone'] : '',
+	  'latitude' => !empty($customer['shipping_latitude']) ? $customer['shipping_latitude'] : '',
+	  'longitude' => !empty($customer['shipping_longitude']) ? $customer['shipping_longitude'] : '',
     ),
   );
 

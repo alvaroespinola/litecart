@@ -39,6 +39,8 @@
         'newsletter',
         'notes',
         'different_shipping_address',
+		'latitude',
+		'longitude',
       );
 
       foreach ($fields as $field) {
@@ -56,6 +58,8 @@
         'country_code',
         'zone_code',
         'phone',
+		'latitude',
+		'longitude',
       );
 
       foreach ($fields as $field) {
@@ -182,6 +186,21 @@
               <label><?php echo language::translate('title_address2', 'Address 2'); ?></label>
               <?php echo functions::form_draw_text_field('address2', true); ?>
             </div>
+			
+			<div class="form-group col-md-6">
+              <label><?php echo language::translate('title_latitude', 'Latitude'); ?></label>
+              <?php echo functions::form_draw_decimal_field('latitude', '',14,-180,+180); ?>
+            </div>
+
+            <div class="form-group col-md-6">
+			  <label><?php echo language::translate('title_longitude', 'Longitude'); ?></label>
+              <?php echo functions::form_draw_decimal_field('longitude', '',14,-180,+180); ?>
+            </div>
+		  </div>
+		  <div class="row">
+			<div class="form-group col-md-6">
+				<?php include(FS_DIR_APP . 'includes/leaflet.inc.html'); ?>
+			</div>
           </div>
 
           <div class="row">
@@ -306,6 +325,16 @@
                 <?php echo functions::form_draw_phone_field('shipping_address[phone]', true); ?>
               </div>
             </div>
+			<div class="row">
+              <div class="form-group col-sm-6">
+                <label><?php echo language::translate('title_latitude', 'Latitude'); ?></label>
+                <?php echo functions::form_draw_decimal_field('shipping_address[latitude]','',14,-180,+180); ?>
+              </div>
+			  <div class="form-group col-sm-6">
+                <label><?php echo language::translate('title_longitude', 'Longitude'); ?></label>
+                <?php echo functions::form_draw_decimal_field('shipping_address[longitude]','',14,-180,+180); ?>
+              </div>
+            </div>
 
           </div>
 
@@ -335,6 +364,7 @@
           </table>
           <?php } ?>
         </div>
+		
       </div>
 
     <?php echo functions::form_draw_form_end(); ?>
