@@ -3,7 +3,7 @@
 
 	<style>
 		html, body {height: 100%;margin: 0;}
-		#map {width: 100%;height: 400px;}
+		#map {width: 100%;height: 350px;}
 	</style>
 	
 <div id="content" class="twelve-eighty">

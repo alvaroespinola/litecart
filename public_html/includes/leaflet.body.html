@@ -17,26 +17,14 @@ var boxshipping_latitude = document.getElementsByName("shipping_address[latitude
 var boxshipping_longitude = document.getElementsByName("shipping_address[longitude]")[0];
 
 
-	/*
-<!-- var map ; -->
-	<!-- if (typeof L !== 'undefined'  -->
-		<!-- && L !== null){ -->*/
-
 map = L.map('map').setView([ -25.40, -57.55], 16);	
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
 	
-/*
-//aviso.innerHTML = "Geol.";
-} else {
-//aviso.innerHTML = "Geby this browser.";
-}
-*/
 
 var marker;
-
 
 $('button[name="getlocation"]').click(function(){
   // Fire your javascript code here.
@@ -82,11 +70,7 @@ $('button[name="getlocation"]').click(function(){
 		boxshipping_longitude.value = longitude;
 	}
 	
-	if (map !== null 
-		//&& map.hasLayer('map') 
-		//&& typeof L !== 'undefined' 
-		//&& L !== null
-		) {
+	if (map !== null) {
 
 		var posi = new L.LatLng(latitude, longitude)
 
