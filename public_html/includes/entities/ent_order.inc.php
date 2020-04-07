@@ -758,9 +758,10 @@
 
       $subject = '['. language::translate('title_order', 'Order', $language_code) .' #'. $this->data['id'] .'] '. language::translate('title_order_confirmation', 'Order Confirmation', $language_code);
 
-      $message = "Thank you for your purchase!\r\n\r\n"
+      $message = "Thank you for your purchase %firstname %lastname!\r\n\r\n"
                . "Your order #%order_id has successfully been created with a total of %payment_due for the following ordered items:\r\n\r\n"
                . "%order_items\r\n\r\n"
+			   . "Shipping Address: %shipping_address\r\n"
                . "A printable order copy is available here:\r\n"
                . "%order_copy_url\r\n\r\n"
                . "Regards,\r\n"
